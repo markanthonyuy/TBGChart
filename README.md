@@ -1,5 +1,6 @@
 # TBGChart
-##Playing with Google Charts
+
+Playing with Google Charts
 
 I sliced some data from dashboard.json like
 
