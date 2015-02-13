@@ -1,0 +1,132 @@
+<html>
+<head>
+    <style>
+        #revenue-chart { border: 1px solid #ccc; width: 600px; }
+    </style>
+</head>
+<body>
+    <!--Div that will hold the pie chart-->
+    <div id="contacts-chart"></div>
+    <div id="expense-chart"></div>
+    <div id="revenue-chart"></div>
+    
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+        // Load the Visualization API and the piechart package.
+        google.load('visualization', '1.0', {'packages':['corechart']});
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(drawContactChart);
+        google.setOnLoadCallback(drawExpenseChart);
+        google.setOnLoadCallback(drawRevenueChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.    
+        function drawContactChart() {
+
+            var data = [
+                { name: 'Members', count: 3 },
+                { name: 'Vendors 1099', count: 5 },
+                { name: 'Vendors', count: 5 },
+                { name: 'Users', count: 18 }
+            ];
+
+            // Create the data table.
+            var contactData = new google.visualization.DataTable();
+            contactData.addColumn('string', 'Contacts');
+            contactData.addColumn('number', 'Count');
+
+            for(var ctr = 0, len = data.length; ctr < len; ctr++) {
+                contactData.addRow([ data[ctr].name, data[ctr].count ]);
+            }
+
+            // Set chart options
+            var options = {
+                title: 'Contacts',
+                width: 1200,
+                height: 600,
+                backgroundColor: '#ccc',
+                titleTextStyle: {
+                    fontSize: 30
+                },
+                legend: {
+                    position: 'left',
+                    textStyle: {
+                        fontSize: 30
+                    }
+                }
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('contacts-chart'));
+            chart.draw(contactData, options);
+        }
+
+        function drawExpenseChart() {
+
+            var data = [
+                { name: 'Programs', amount: 20000, percent: 20 },
+                { name: 'Fund Raisers', amount: 20000, percent: 20 },
+                { name: 'Administrator', amount: 20000, percent: 60 }
+            ];
+
+            // Create the data table.
+            var expenseData = new google.visualization.DataTable();
+            expenseData.addColumn('string', 'Name');
+            expenseData.addColumn('number', 'Amount');
+            expenseData.addColumn('number', 'Percent');
+
+            for(var ctr = 0, len = data.length; ctr < len; ctr++) {
+                expenseData.addRow([ data[ctr].name, data[ctr].amount, data[ctr].percent ]);
+            }
+
+            // Set chart options
+            var options = {
+                title: 'Expense',
+                width: 1200,
+                height: 600,
+                is3D: true
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('expense-chart'));
+            chart.draw(expenseData, options);
+        }
+
+        function drawRevenueChart() {
+
+            var data = [
+                { name: 'Investment Income', amount: 55000, percent: 55 },
+                { name: 'Programs', amount: 10000, percent: 10 },
+                { name: 'Fund Raisers', amount: 25000, percent: 25 },
+                { name: 'Contributions Gift Grants', amount: 10000, percent: 10 },
+            ];
+
+            // Create the data table.
+            var revenueData = new google.visualization.DataTable();
+            revenueData.addColumn('string', 'Name');
+            revenueData.addColumn('number', 'Amount');
+            revenueData.addColumn('number', 'Percent');
+
+            for(var ctr = 0, len = data.length; ctr < len; ctr++) {
+                revenueData.addRow([ data[ctr].name, data[ctr].amount, data[ctr].percent ]);
+            }
+
+            // Set chart options
+            var options = {
+                title: 'Expense',
+                width: 600,
+                height: 400,
+                is3D: true
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('revenue-chart'));
+            chart.draw(revenueData, options);
+        }
+    </script>
+</body>
+</html>
