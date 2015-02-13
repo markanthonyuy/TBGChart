@@ -1,7 +1,7 @@
 # TBGChart
 ##Playing with Google Charts
 
-### I sliced some data from dashboard.json and used it here
+I sliced some data from dashboard.json like
 
 ```javascript
 "revenue" : {
@@ -23,3 +23,5 @@
   }
 }
 ```
+
+and create a pie chart out of that data.
