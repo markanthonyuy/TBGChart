@@ -1,0 +1,118 @@
+{
+   "contacts" : {
+      "members" : "3",
+      "vendors_1099" : "5",
+      "vendors" : "5",
+      "users" : "18"
+   },
+   "expenses" : {
+      "programs" : {
+         "amount" : "20000",
+         "percent" : "20"
+      },
+      "fund_raisers" : {
+         "amount" : "20000",
+         "percent" : "20"
+      },
+      "administrateive" : {
+         "amount" : "60000",
+         "percent" : "60"
+      }
+   },
+   "briefcase" : {
+      "count" : "15",
+      "size" : "4.1M"
+   },
+   "revenue" : {
+      "investment_income" : {
+         "amount" : "55000",
+         "percent" : ""
+      },
+      "programs" : {
+         "amount" : "10000",
+         "percent" : "10"
+      },
+      "fund_raisers" : {
+         "amount" : "25000",
+         "percent" : "25"
+      },
+      "contributions_gifts_grants" : {
+         "amount" : "10000",
+         "percent" : "10"
+      }
+   },
+   "date_of_last_check_recorded" : "02/05/2015",
+   "login" : {
+      "current_month" : [
+         {
+            "login_date" : "02/12/2015",
+            "user" : "cvtheory2"
+         },
+         {
+            "login_date" : "02/10/2015",
+            "user" : "cvtheory2"
+         },
+         {
+            "login_date" : "02/09/2015",
+            "user" : "rlauer"
+         },
+         {
+            "login_date" : "02/07/2015",
+            "user" : "markuy"
+         },
+         {
+            "login_date" : "02/01/2015",
+            "user" : "cvtheory2"
+         }
+      ],
+      "previous_month" : [
+         {
+            "login_date" : "01/30/2015",
+            "user" : "cvtheory2"
+         },
+         {
+            "login_date" : "01/29/2015",
+            "user" : "rlauer"
+         },
+         {
+            "login_date" : "01/23/2015",
+            "user" : "rlauer"
+         },
+         {
+            "login_date" : "02/18/2015",
+            "user" : "rlauer"
+         },
+         {
+            "login_date" : "01/16/2015",
+            "user" : "markuy"
+         }
+      ]
+   },
+   "checking" : [
+      {
+         "current_balance" : "1890",
+         "reconciliation_date" : "01/27/2015",
+         "previous_balance" : "1408.60",
+         "name" : "North Peak Soccer Booster",
+         "reconciliation_state" : "current",
+         "trend" : "+"
+      },
+      {
+         "current_balance" : "910",
+         "reconciliation_date" : "",
+         "previous_balance" : "1088.10",
+         "name" : "JV Checking",
+         "reconciliation_state" : "never",
+         "trend" : "-"
+      },
+      {
+         "current_balance" : "2512.18",
+         "reconciliation_date" : "12/10/2014",
+         "previous_balance" : "1408.40",
+         "name" : "Varsity Checking",
+         "reconciliation_state" : "late",
+         "trend" : "-"
+      }
+   ]
+}
+

@@ -1,0 +1,13 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+
+#dashboard-calendar { width: 400px; height: 300px; font-family: 'Droid Sans Mono'; margin: 50px 5px 0; }
+#dashboard-calendar .clndr-controls { width: 100%; height: 30px; background: #69a776; color: #fff; font-weight: 700px; }
+#dashboard-calendar .clndr-controls .clndr-previous-button { width: 50px; text-align: center; cursor: pointer; height: 30px; line-height: 30px; }
+#dashboard-calendar .clndr-controls .month { width: 300px; text-align: center; text-transform: uppercase; height: 30px; line-height: 30px; }
+#dashboard-calendar .clndr-controls .clndr-next-button { width: 50px; text-align: center; cursor: pointer; height: 30px; line-height: 30px; }
+#dashboard-calendar .clndr-grid { border-left: 1px solid #69a776; border-right: 1px solid #69a776; border-bottom: 1px solid #69a776; }
+#dashboard-calendar .clndr-grid .days-of-the-week { width: 100%; }
+#dashboard-calendar .clndr-grid .days-of-the-week .header-day { width: 57.1px; text-align: center; white-space: nowrap; height: 30px; line-height: 30px; }
+#dashboard-calendar .clndr-grid .days-of-the-week .days { width: 400px; }
+#dashboard-calendar .clndr-grid .days-of-the-week .days .day { width: 57.1px; text-align: center; height: 30px; line-height: 30px; }
+#dashboard-calendar .clndr-grid .days-of-the-week .days .event { background: #97ce7f; cursor: pointer; color: #fff; }
