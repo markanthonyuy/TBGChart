@@ -3,10 +3,20 @@
 <head>
     <link rel="stylesheet" type="text/css" href="assets/clndr.css">
     <style>
+        * { padding: 0; margin: 0; }
         .dashboard { width: 1200px; height: 500px; margin: 0 auto 50px auto; }
         .dashboard::after { content: none; display: block; clear: both; }
         .dashboard div { float: left; } 
-        #dashboard-checking-1, #dashboard-checking-2, #dashboard-checking-3 { width: 400px; height: 300px; border: 1px solid #ccc; box-sizing: border-box;}
+        .dashboard h1 { text-align: center; } 
+        .dashboard div h2 { text-align: center; text-transform: uppercase; background: #1874CD; font-size: 18px; color: #fff; padding: 5px; } 
+        #dashboard-checking-1, #dashboard-checking-2, #dashboard-checking-3 { width: 350px; height: 300px; border: 1px solid #1874CD; box-sizing: border-box; margin: 0 3% 0 3%; font-family: 'Arial'; }
+        #dashboard-checking-1 { margin-left: 0; }
+        #dashboard-checking-3 { margin-right: 0; }
+
+        .checking_account_body { padding: 10px; width: 100%; box-sizing: border-box; }
+        .checking_account_balance { font-size: 50px; text-align: right; }
+        .checking_account_balance_change { text-align: right; font-size: 18px; font-style: italic; }
+        .checking_account_reconciliation { margin-top: 120px; }
      </style>
 </head>
 <body>
@@ -35,11 +45,26 @@
                 <% }); %>
                 <div class="days">
                     <% _.each(days, function(day, i) { %>
-                        
                         <div class="<%= day.classes %>" title="<% var x = []; _.each(day.events, function(event) { x.push(event.title) }); print(x); %>"><%= day.day %></div>
                     <% }); %>
                 </div>
             </div>
+        </div>
+    </script>
+    <script type="text/template" id="checking-tmpl">
+        <h2>Checking Account <%= count %></h2>
+        <div class="checking_account_body">
+            <p class="checking_account_balance">$<%= current_balance %></p>
+            <p class="checking_account_balance_change">
+                <% if(current_balance > previous_balance) { %>
+                    (+<%= (current_balance - previous_balance).toFixed(2) %>)
+                <% } else { %>
+                    (<%= (current_balance - previous_balance).toFixed(2) %>)
+                <% } %>
+            </p>
+            
+            <p class="checking_account_reconciliation">Last Reconciliation</p>
+            <p class="checking_account_reconciliation_date"><%= reconciliation_date %></p>
         </div>
     </script>
 
@@ -159,7 +184,7 @@
                 },
                 {
                     current_balance: 2512.18,
-                    reconciliation_date: 12/10/2014,
+                    reconciliation_date: '12/10/2014',
                     previous_balance: 1408.40,
                     name: 'Varsity Checking',
                     reconciliation_state: 'late',
@@ -175,54 +200,75 @@
         //google.setOnLoadCallback(drawContactChart);
         google.setOnLoadCallback(drawExpenseChart);
         google.setOnLoadCallback(drawRevenueChart);
-        $('#dashboard-calendar').clndr({
-            template: $('#calendar-tmpl').html(),
-            events: [
-                {
-                    date: '2015-01-03',
-                    title: 'cvtheory2'
-                }, 
-                {
-                    date: '2015-01-07',
-                    title: 'markuy'
-                }, 
-                {
-                    date: '2015-01-14',
-                    title: 'rlauer'
-                },
-                {
-                    date: '2015-01-20',
-                    title: 'markuy'
-                },
-                {
-                    date: '2015-01-29',
-                    title: 'markuy'
-                },
-                {
-                    date: '2015-02-07',
-                    title: 'cvtheory2'
-                }, 
-                {
-                    date: '2015-02-07',
-                    title: 'markuy'
-                }, 
-                {
-                    date: '2015-02-14',
-                    title: 'rlauer'
-                },
-                {
-                    date: '2015-02-20',
-                    title: 'markuy'
-                },
-                {
-                    date: '2015-02-22',
-                    title: 'markuy'
-                }
-            ]
-        });
+        loadCalendar();
+        loadCheckingAccount();
+
+        function loadCheckingAccount() {
+            var temp = _.template($('#checking-tmpl').html());
+            _.each(dashboardData.checking, function(checking, index) {
+                checking.count = index + 1;
+                $('#dashboard-checking-' + (index + 1)).html(temp(checking))
+            });
+        }
 
         function loadCalendar() {
-
+            $('#dashboard-calendar').clndr({
+                template: $('#calendar-tmpl').html(),
+                events: [
+                    {
+                        date: '2015-01-03',
+                        title: 'cvtheory2'
+                    }, 
+                    {
+                        date: '2015-01-07',
+                        title: 'markuy'
+                    }, 
+                    {
+                        date: '2015-01-14',
+                        title: 'rlauer'
+                    },
+                    {
+                        date: '2015-01-20',
+                        title: 'markuy'
+                    },
+                    {
+                        date: '2015-01-29',
+                        title: 'markuy'
+                    },
+                    {
+                        date: '2015-02-01',
+                        title: 'cvtheory2'
+                    }, 
+                    {
+                        date: '2015-02-08',
+                        title: 'markuy'
+                    },  
+                    {
+                        date: '2015-02-07',
+                        title: 'markuy'
+                    }, 
+                    {
+                        date: '2015-02-17',
+                        title: 'markuy'
+                    }, 
+                    {
+                        date: '2015-02-14',
+                        title: 'markuy'
+                    }, 
+                    {
+                        date: '2015-02-15',
+                        title: 'rlauer'
+                    },
+                    {
+                        date: '2015-02-20',
+                        title: 'markuy'
+                    },
+                    {
+                        date: '2015-02-22',
+                        title: 'markuy'
+                    }
+                ]
+            });
         }
 
         // Callback that creates and populates a data table,
