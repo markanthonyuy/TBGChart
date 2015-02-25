@@ -9,6 +9,7 @@
 #dashboard-calendar .clndr-grid .days-of-the-week { width: 100%; }
 #dashboard-calendar .clndr-grid .days-of-the-week .header-day { width: 50px; text-align: center; white-space: nowrap; height: 30px; line-height: 30px; background: #E5F2FF; }
 #dashboard-calendar .clndr-grid .days-of-the-week .days { width: 350px; }
-#dashboard-calendar .clndr-grid .days-of-the-week .days .day { width: 50px; text-align: center; height: 30px; line-height: 30px; background: #F1F2F4; } 
+#dashboard-calendar .clndr-grid .days-of-the-week .days .day { width: 49px; text-align: center; height: 30px; line-height: 30px; background: #F1F2F4; border-top: 1px solid #fff; border-left: 1px solid #fff; } 
+#dashboard-calendar .clndr-grid .days-of-the-week .days .calendar-dow-0 { border-left: none; } 
 #dashboard-calendar .clndr-grid .days-of-the-week .adjacent-month { background: #B9DCFF; color: #ccc; } 
 #dashboard-calendar .clndr-grid .days-of-the-week .days .event { background: #1C86EE; cursor: pointer; color: #fff; }
