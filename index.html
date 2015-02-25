@@ -16,11 +16,10 @@
         <div id="dashboard-checking-2"></div>
         <div id="dashboard-checking-3"></div>
         <div id="dashboard-calendar"></div>
-        <div id="dashboard-contacts-chart"></div>
+        <div id="dashboard-revenue-chart"></div>
         <div id="dashboard-expense-chart"></div>
     </div>
     <!--Div that will hold the pie chart-->
-    <div id="revenue-chart"></div>
     
     <!--Load the AJAX API-->
     <script type="text/template" id="calendar-tmpl">
@@ -173,19 +172,19 @@
         google.load('visualization', '1.0', {'packages':['corechart']});
 
         // Set a callback to run when the Google Visualization API is loaded.
-        google.setOnLoadCallback(drawContactChart);
+        //google.setOnLoadCallback(drawContactChart);
         google.setOnLoadCallback(drawExpenseChart);
-        /*google.setOnLoadCallback(drawRevenueChart);*/
+        google.setOnLoadCallback(drawRevenueChart);
         $('#dashboard-calendar').clndr({
             template: $('#calendar-tmpl').html(),
             events: [
                 {
                     date: '2015-01-03',
-                    title: 'cvtheory2,'
+                    title: 'cvtheory2'
                 }, 
                 {
                     date: '2015-01-07',
-                    title: 'markuy,'
+                    title: 'markuy'
                 }, 
                 {
                     date: '2015-01-14',
@@ -201,11 +200,11 @@
                 },
                 {
                     date: '2015-02-07',
-                    title: 'cvtheory2,'
+                    title: 'cvtheory2'
                 }, 
                 {
                     date: '2015-02-07',
-                    title: 'markuy,'
+                    title: 'markuy'
                 }, 
                 {
                     date: '2015-02-14',
@@ -292,9 +291,10 @@
             // Set chart options
             var options = {
                 title: 'Expense',
-                width: 390,
+                width: 400,
                 height: 300,
-                is3D: true
+                is3D: true,
+                colors: ['#60AFFE', '#1C86EE', '#1874CD']
             };
 
             // Instantiate and draw our chart, passing in some options.
@@ -323,14 +323,15 @@
 
             // Set chart options
             var options = {
-                title: 'Expense',
-                width: 390,
+                title: 'Revenue',
+                width: 400,
                 height: 300,
-                is3D: true
+                is3D: true,
+                colors: ['#60AFFE', '#1C86EE', '#1874CD', '#104E8B']
             };
 
             // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.PieChart(document.getElementById('revenue-chart'));
+            var chart = new google.visualization.PieChart(document.getElementById('dashboard-revenue-chart'));
             chart.draw(revenueData, options);
         }
     </script>
