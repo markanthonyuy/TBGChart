@@ -60,12 +60,15 @@
     <script type="text/template" id="checking-tmpl">
         <h2>Checking Account <%= count %></h2>
         <div class="checking_account_body">
-            <p class="checking_account_balance">$<%= current_balance.toLocaleString() %></p>
+            <p class="checking_account_balance"><%= formatMoney(current_balance, '$') %></p>
             <p class="checking_account_balance_change">
+                <% 
+                    var diff = current_balance - previous_balance;
+                %>
                 <% if(current_balance > previous_balance) { %>
-                    <img src="https://cdn3.iconfinder.com/data/icons/musthave/24/Stock%20Index%20Up.png">(+<%= (current_balance - previous_balance).toLocaleString() %>)
+                    <img src="https://cdn3.iconfinder.com/data/icons/musthave/24/Stock%20Index%20Up.png">(<%= formatMoney(diff, '+') %>)
                 <% } else { %>
-                    <img src="https://cdn3.iconfinder.com/data/icons/musthave/24/Stock%20Index%20Down.png">(<%= (current_balance - previous_balance).toLocaleString() %>)
+                    <img src="https://cdn3.iconfinder.com/data/icons/musthave/24/Stock%20Index%20Down.png">(<%= formatMoney(diff) %>)
                 <% } %>
             </p>
             
@@ -208,6 +211,21 @@
         google.setOnLoadCallback(drawRevenueChart);
         loadCalendar();
         loadCheckingAccount();
+
+        function formatMoney(amount, currency) {
+            var diffPoint = amount.toLocaleString().split('.'),
+                newFormat;
+
+            if(diffPoint.length > 1) {
+                newFormat = diffPoint[0] + '.' + (diffPoint[1].length == 1 ? diffPoint[1] + '0' : diffPoint[1]);
+            } else {
+                newFormat = diffPoint[0] + '.00';
+            }
+
+            if(currency) return currency + newFormat;
+
+            return newFormat;
+        }
 
         function loadCheckingAccount() {
             var temp = _.template($('#checking-tmpl').html());
