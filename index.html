@@ -60,17 +60,17 @@
     <script type="text/template" id="checking-tmpl">
         <h2>Checking Account <%= count %></h2>
         <div class="checking_account_body">
-            <p class="checking_account_balance">$<%= current_balance %></p>
+            <p class="checking_account_balance">$<%= current_balance.toLocaleString() %></p>
             <p class="checking_account_balance_change">
                 <% if(current_balance > previous_balance) { %>
-                    <img src="https://cdn3.iconfinder.com/data/icons/musthave/24/Stock%20Index%20Up.png">(+<%= (current_balance - previous_balance).toFixed(2) %>)
+                    <img src="https://cdn3.iconfinder.com/data/icons/musthave/24/Stock%20Index%20Up.png">(+<%= (current_balance - previous_balance).toLocaleString() %>)
                 <% } else { %>
-                    <img src="https://cdn3.iconfinder.com/data/icons/musthave/24/Stock%20Index%20Down.png">(<%= (current_balance - previous_balance).toFixed(2) %>)
+                    <img src="https://cdn3.iconfinder.com/data/icons/musthave/24/Stock%20Index%20Down.png">(<%= (current_balance - previous_balance).toLocaleString() %>)
                 <% } %>
             </p>
             
             <p class="checking_account_reconciliation">Last Reconciliation</p>
-            <p class="checking_account_reconciliation_date"><%= (reconciliation_date) ? '<span class="event" data-title="' + reconciliation_date + '">' + moment(reconciliation_date).fromNow() + '</span>' : '' %></p>
+            <p class="checking_account_reconciliation_date"><%= (reconciliation_date) ? '<span class="event" data-title="' + reconciliation_date + '">' + moment(reconciliation_date, 'MM/DD/YYYY').fromNow() + '</span>' : '' %></p>
         </div>
     </script>
 
