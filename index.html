@@ -73,7 +73,7 @@
             </p>
             
             <p class="checking_account_reconciliation">Last Reconciliation</p>
-            <p class="checking_account_reconciliation_date"><%= (reconciliation_date) ? '<span class="event" data-title="' + reconciliation_date + '">' + moment(reconciliation_date, 'MM/DD/YYYY').fromNow() + '</span>' : '' %></p>
+            <p class="checking_account_reconciliation_date"><%= (reconciliation_date) ? '<span class="event" data-title="' + reconciliation_date + '">' + moment(reconciliation_date, 'MM/DD/YYYY').fromNow() + '</span>' : 'never' %></p>
         </div>
     </script>
 
@@ -308,7 +308,6 @@
 
             $(document).on({
                 mouseenter: function() {
-                    console.log($(this).data('title'));
                     var users = $(this).data('title').split(',');
                     var userHTML = '';
                     _.each(users, function(user) {
